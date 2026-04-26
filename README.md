@@ -30,6 +30,8 @@ The project addresses a core challenge in modern astrophysics: extracting physic
 ##  Results
 The current model achieves an accuracy of ~**95%** in binary classification. This highlights the effectiveness of ensemble learning in recognizing the structural patterns of gravitational waves even when the Signal-to-Noise Ratio (SNR) is low.
 
+![Waveform Comparison](waveform_comparison.png)
+
 ##  Conclusion & Future Directions
 This project serves as a foundational step toward more complex parameter estimation. My next goals for this pipeline include:
 * Transitioning from **Random Forest** to **Convolutional Neural Networks (CNNs)** for better spatial feature extraction.
