@@ -1,4 +1,4 @@
-# GW-Signal-Feature-Extractor
+
 # GW-Signal-Feature-Extractor
 ### Machine Learning for Gravitational Wave Parameter Estimation
 
