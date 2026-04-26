@@ -1,0 +1,49 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 1. Generate Synthetic Gravitational Wave Data
+def generate_gw_signal(duration=1.0, sampling_rate=2048):
+    t = np.linspace(0, duration, sampling_rate)
+    # A "Chirp" signal: frequency increases over time
+    f0, f1 = 30, 250 
+    chirp = np.sin(2 * np.pi * (f0 * t + (f1 - f0) * t**2 / (2 * duration)))
+    # Add Gaussian Noise (simulating detector noise)
+    noise = np.random.normal(0, 1.5, sampling_rate)
+    return chirp + noise, t
+
+# 2. Prepare Dataset
+X = [] # Features
+y = [] # Labels (1 for GW signal, 0 for pure noise)
+
+for i in range(500):
+    # Class 1: Signal + Noise
+    sig, _ = generate_gw_signal()
+    X.append(sig)
+    y.append(1)
+    
+    # Class 0: Just Noise
+    X.append(np.random.normal(0, 1.5, 2048))
+    y.append(0)
+
+X = np.array(X)
+y = np.array(y)
+
+# 3. Train a Simple ML Model
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train, y_train)
+
+# 4. Evaluate
+predictions = model.predict(X_test)
+print(f"Model Accuracy: {accuracy_score(y_test, predictions) * 100:.2f}%")
+
+# 5. Visualization 
+plt.figure(figsize=(10, 4))
+plt.plot(X[0], label="Simulated GW + Noise", alpha=0.7)
+plt.plot(X[1], label="Pure Detector Noise", color='red', alpha=0.5)
+plt.title("Waveform Analysis: GW Signal vs. Noise")
+plt.legend()
+plt.show()
