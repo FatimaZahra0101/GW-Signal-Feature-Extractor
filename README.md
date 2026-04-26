@@ -2,12 +2,12 @@
 # GW-Signal-Feature-Extractor
 ### Machine Learning for Gravitational Wave Parameter Estimation
 
-## 🌌 Project Overview
+## Project Overview
 This repository contains a proof-of-concept Python pipeline designed to detect and classify **Gravitational Wave (GW)** signals from neutron star mergers. 
 
 The project addresses a core challenge in modern astrophysics: extracting physical information from complex, noisy signals. While traditional methods are computationally expensive, this project demonstrates how **Machine Learning (ML)** can be used for fast, data-driven inference of binary merger signatures.
 
-## 🚀 Key Features
+##  Key Features
 * **Synthetic Signal Generation:** Uses NumPy to simulate "chirp" waveforms where frequency increases over time ($f_0 \to f_1$).
 * **Noise Modeling:** Injects Gaussian noise to simulate the sensitivity limits of ground-based interferometers like LIGO.
 * **ML Classification:** Implements a **Random Forest Classifier** to distinguish between signal-bearing data and stochastic noise.
